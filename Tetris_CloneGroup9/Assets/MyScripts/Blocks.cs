@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BricMovement : MonoBehaviour
+public class Blocks : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
