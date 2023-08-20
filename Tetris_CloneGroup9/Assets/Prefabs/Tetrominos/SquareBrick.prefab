@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3674486622900070069}
   - component: {fileID: 3674486622900070068}
   - component: {fileID: 3862502611764890311}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tile4
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 3674486623710792712}
   - component: {fileID: 3674486623710792711}
   - component: {fileID: 2786630156883155288}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tile2
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 3674486624280485948}
   - component: {fileID: 3674486624280485947}
   - component: {fileID: 7243417736365336833}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tile5
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 3674486624589343245}
   - component: {fileID: 3674486624589343244}
   - component: {fileID: 6698005220815588115}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tile3
   m_TagString: Brick
   m_Icon: {fileID: 0}

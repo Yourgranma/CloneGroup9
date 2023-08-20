@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1006616347242896415}
   - component: {fileID: 1006616347242896413}
   - component: {fileID: 1006616347242896414}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Brick2
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -121,6 +121,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1006616347591552208}
   - component: {fileID: 1006616347591552209}
+  - component: {fileID: 998770715031723961}
+  - component: {fileID: 713421294214761120}
   - component: {fileID: 8655837653068144442}
   - component: {fileID: 5057799393606017492}
   - component: {fileID: -6451878878450021573}
@@ -165,6 +167,36 @@ MonoBehaviour:
   boxSpeed: 1
   downMovement: 1
   stopMoving: 0
+--- !u!114 &998770715031723961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006616347591552210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99d6be6c5729fa149a3595bdc4b9a77a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycastDistance: 5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+--- !u!114 &713421294214761120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006616347591552210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cef1cf13a24ae8f4cb7dbf854bc79bbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxSpeed: 1
+  downMovement: 4
 --- !u!61 &8655837653068144442
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -249,7 +281,7 @@ GameObject:
   - component: {fileID: 1006616347909765708}
   - component: {fileID: 1006616347909765698}
   - component: {fileID: 1006616347909765699}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Brick4
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -360,7 +392,7 @@ GameObject:
   - component: {fileID: 1006616348862541894}
   - component: {fileID: 1006616348862541892}
   - component: {fileID: 1006616348862541893}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Brick3
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -471,7 +503,7 @@ GameObject:
   - component: {fileID: 1006616348902187152}
   - component: {fileID: 1006616348902187158}
   - component: {fileID: 1006616348902187159}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Brick1
   m_TagString: Brick
   m_Icon: {fileID: 0}

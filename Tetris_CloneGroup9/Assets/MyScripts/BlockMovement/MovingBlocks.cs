@@ -32,7 +32,7 @@ public class MovingBlocks : MonoBehaviour
         SideMovement();
         SpeedIncrease();
 
-        RotatingBlock();
+        //RotatingBlock();
         //float horizontalInput = Input.GetAxis("Horizontal");
         //transform.position = transform.position + new Vector3(horizontalInput * boxSpeed, 0, 0);
 

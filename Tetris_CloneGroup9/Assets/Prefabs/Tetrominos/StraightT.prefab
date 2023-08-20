@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 738663649714179105}
   - component: {fileID: 738663649714179119}
   - component: {fileID: 738663649714179104}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tile4
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 738663650314078768}
   - component: {fileID: 738663650314078782}
   - component: {fileID: 738663650314078783}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tile1
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 738663650432318789}
   - component: {fileID: 738663650432318787}
   - component: {fileID: 738663650432318788}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tile3
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -343,6 +343,8 @@ GameObject:
   m_Component:
   - component: {fileID: 738663650847483863}
   - component: {fileID: 738663650847483816}
+  - component: {fileID: 5875874502887191304}
+  - component: {fileID: 8750814989371372790}
   - component: {fileID: 8609059204848020884}
   - component: {fileID: -4349465780170936687}
   m_Layer: 0
@@ -386,6 +388,36 @@ MonoBehaviour:
   boxSpeed: 1
   downMovement: 1
   stopMoving: 0
+--- !u!114 &5875874502887191304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738663650847483817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99d6be6c5729fa149a3595bdc4b9a77a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycastDistance: 5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+--- !u!114 &8750814989371372790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738663650847483817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cef1cf13a24ae8f4cb7dbf854bc79bbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxSpeed: 1
+  downMovement: 4
 --- !u!61 &8609059204848020884
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -444,7 +476,7 @@ GameObject:
   - component: {fileID: 738663651229694309}
   - component: {fileID: 738663651229694307}
   - component: {fileID: 738663651229694308}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tile2
   m_TagString: Brick
   m_Icon: {fileID: 0}
