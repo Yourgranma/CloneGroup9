@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MovingBlocks : MonoBehaviour
 {
-    public float boxSpeed = 0.04f;
-    public float downMovement = 2f;
+    public float boxSpeed = 1f;
+    public float downMovement = 1f;
     Vector2 movement;
     // Start is called before the first frame update
     void Start()
