@@ -10,6 +10,7 @@ public class MovingBlocks : MonoBehaviour
 
     public bool stopMoving;
 
+    private Rigidbody2D rigidbody2D;
     private TetrisManager tetrisManager;
     private GameObject gameManager;
 
@@ -20,6 +21,7 @@ public class MovingBlocks : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rigidbody2D = GetComponent<Rigidbody2D>();
         tetrisManager = gameManager.GetComponent<TetrisManager>();
         stopMoving = false;
     }
@@ -75,8 +77,12 @@ public class MovingBlocks : MonoBehaviour
             tetrisManager.blockSpawning.spawning = true;
             stopMoving = true;
             GetComponent<MovingBlocks>().enabled = false;
+            rigidbody2D.simulated = false;
+            //rigidbody2D.enabled = false;
         }
     }
+
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
