@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Brick
+  - Ground
+  - SpawningBricks
+  - GameManager
   layers:
   - Default
   - TransparentFX

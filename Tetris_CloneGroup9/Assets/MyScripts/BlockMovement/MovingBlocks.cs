@@ -5,12 +5,23 @@ using UnityEngine;
 public class MovingBlocks : MonoBehaviour
 {
     public float boxSpeed = 1f;
-    public float downMovement = 1f;
+    public float downMovement = 4f;
     Vector2 movement;
+
+    public bool stopMoving;
+
+    private TetrisManager tetrisManager;
+    private GameObject gameManager;
+
+    private void Awake()
+    {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+    }
     // Start is called before the first frame update
     void Start()
     {
-        
+        tetrisManager = gameManager.GetComponent<TetrisManager>();
+        stopMoving = false;
     }
 
     // Update is called once per frame
@@ -35,11 +46,15 @@ public class MovingBlocks : MonoBehaviour
     }
     private void SpeedIncrease()
     {
-        if (Input.GetKey(KeyCode.S))
-            transform.position = transform.position + new Vector3(0, -boxSpeed, 0);
+        if (!stopMoving)
+        {
+            if (Input.GetKey(KeyCode.S))
+                transform.position = transform.position + new Vector3(0, -boxSpeed, 0);
 
-        else
-            transform.position = transform.position + new Vector3(0, -downMovement * Time.deltaTime, 0);
+            else
+                transform.position = transform.position + new Vector3(0, -downMovement * Time.deltaTime, 0);
+        }
+        
     }
     private void RotatingBlock()
     {
@@ -47,5 +62,23 @@ public class MovingBlocks : MonoBehaviour
         {
             transform.Rotate(0, 0, 90);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+
+        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag=="Brick")
+        {
+            boxSpeed = 0f;
+            downMovement = 0f;
+            tetrisManager.blockSpawning.spawning = true;
+            stopMoving = true;
+            GetComponent<MovingBlocks>().enabled = false;
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
     }
 }

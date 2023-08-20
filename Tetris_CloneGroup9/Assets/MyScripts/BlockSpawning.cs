@@ -16,7 +16,7 @@ public class BlockSpawning : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        spawning = true;
     }
 
     // Update is called once per frame
