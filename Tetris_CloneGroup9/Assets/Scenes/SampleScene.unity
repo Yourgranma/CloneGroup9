@@ -850,7 +850,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 2096384751}
   blockPrefab: {fileID: 0}
   _tetromino:
-  - {fileID: 5343183694883385972, guid: e35e4dd718c0dc34fb1777048e03d244, type: 3}
+  - {fileID: 738663650847483817, guid: 1cb954261639527489fa774483722d16, type: 3}
   - {fileID: 8269813604274116497, guid: 1649c668658cc2c418f8ba13e2606931, type: 3}
   - {fileID: 6435937831206214194, guid: b0259f0725a9d6b4d8c3114bb804a6de, type: 3}
   - {fileID: 738663650847483817, guid: 1cb954261639527489fa774483722d16, type: 3}

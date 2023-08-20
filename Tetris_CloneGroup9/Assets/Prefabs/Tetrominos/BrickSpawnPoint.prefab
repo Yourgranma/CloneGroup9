@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99d6be6c5729fa149a3595bdc4b9a77a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typeOfTetro: 3
   raycastDistance: 5
   groundLayer:
     serializedVersion: 2

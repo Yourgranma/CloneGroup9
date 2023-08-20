@@ -5,7 +5,7 @@ using UnityEngine;
 public class BlockSpawning : MonoBehaviour
 {
     public bool spawning;
-    public enum Tetromino{Straight, Square, T, L, Skew };
+    public enum Tetromino{Blank, Straight, Square, T, L, Skew };
     public Tetromino tetromino;
     public Transform spawnPoint;
     public GameObject blockPrefab;
@@ -16,6 +16,7 @@ public class BlockSpawning : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         spawning = true;
     }
 
@@ -42,23 +43,24 @@ public class BlockSpawning : MonoBehaviour
         {
             
             case 1:
-                blockPrefab = _tetromino[1];
+                blockPrefab = _tetromino[0];
                 break;
 
             case 2:
-                blockPrefab = _tetromino[2];
+                blockPrefab = _tetromino[1];
                 break;
 
             case 3:
-                blockPrefab = _tetromino[3];
+                blockPrefab = _tetromino[2];
                 break;
 
             case 4:
-                blockPrefab = _tetromino[4];
+                tetromino = Tetromino.Straight;
+                blockPrefab = _tetromino[3];
                 break;
 
             case 5:
-                blockPrefab = _tetromino[5];
+                blockPrefab = _tetromino[4];
                 break;
         }
     }
