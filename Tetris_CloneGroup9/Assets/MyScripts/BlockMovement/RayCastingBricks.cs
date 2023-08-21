@@ -5,12 +5,13 @@ using UnityEngine;
 public class RayCastingBricks : MonoBehaviour
 {
     public enum Rotations { Zero, Ninety, OneEighty, MinusNinety, ThreeSixty}
-    Rotations rotations;
+    public Rotations rotations;
     public enum TypeOfTetro { Straight, L, Skwe, Square}
     public TypeOfTetro typeOfTetro;
     public float raycastDistance = .5f;
     public LayerMask groundLayer;
 
+    RaycastHit2D hit;
     //References
     private GameObject gameManager;
     private TetrisManager _tetrisManager;
@@ -24,7 +25,8 @@ public class RayCastingBricks : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rotations = Rotations.MinusNinety;
+      
+        rotations = Rotations.Zero;
     }
 
     // Update is called once per frame
@@ -33,6 +35,33 @@ public class RayCastingBricks : MonoBehaviour
 
         RaycastStraight();
         RayCastTests();
+        if (transform.rotation.eulerAngles.z == 270)
+        {
+            //transform.Rotate(0, 0, -90);
+        }
+
+       
+        if (transform.rotation.eulerAngles.z == 0)
+        {
+            rotations = Rotations.Zero;
+        }
+
+        else if (transform.rotation.eulerAngles.z == 90)
+        {
+            rotations = Rotations.Ninety;
+        }
+
+        else if (transform.rotation.eulerAngles.z == 180)
+        {
+            rotations = Rotations.OneEighty;
+        }
+
+        else if (transform.rotation.eulerAngles.z ==270)
+        {
+            rotations = Rotations.MinusNinety;
+        }
+
+        Debug.Log(transform.rotation.eulerAngles.z);
     }
 
     private void RayCastTests()
@@ -89,23 +118,20 @@ public class RayCastingBricks : MonoBehaviour
                     Debug.DrawRay(transform.position, Up, Color.blue);
 
                     RaycastHit2D hit3 = Physics2D.Raycast(transform.position + new Vector3(1f, 0, 0), Vector2.up, raycastDistance, groundLayer);
-                    Vector2 brick1up = (transform.TransformDirection(Vector2.up)) * raycastDistance;
                     Debug.DrawRay(transform.position + new Vector3(1f, 0, 0), Up, Color.blue);
 
                     RaycastHit2D hit4 = Physics2D.Raycast(transform.position + new Vector3(-1f, 0, 0), Vector2.up, raycastDistance, groundLayer);
-                    Vector2 brick3up = (transform.TransformDirection(Vector2.up)) * raycastDistance;
                     Debug.DrawRay(transform.position + new Vector3(-1f, 0, 0), Up, Color.blue);
 
                     RaycastHit2D hit5 = Physics2D.Raycast(transform.position + new Vector3(-2f, 0, 0), Vector2.up, raycastDistance, groundLayer);
-                    Vector2 brick4up = (transform.TransformDirection(Vector2.up)) * raycastDistance;
                     Debug.DrawRay(transform.position + new Vector3(-2f, 0, 0), Up, Color.blue);
                 }
                 
                 else if (rotations == Rotations.MinusNinety)
                 {
-                    RaycastHit2D hit2 = Physics2D.Raycast(transform.position + new Vector3(0, -2f, 0), Vector2.left, raycastDistance, groundLayer);
+                    RaycastHit2D hit2 = Physics2D.Raycast(transform.position + new Vector3(0, -2f, 0), Vector2.right, raycastDistance, groundLayer);
                     Vector2 right = (transform.TransformDirection(Vector2.right)) * raycastDistance;
-                    Debug.DrawRay(transform.position + new Vector3(0, -2f, 0), right, Color.blue);
+                    Debug.DrawRay(transform.position + new Vector3(0, -2f, 0), right, Color.red);
                 }
             }
         }

@@ -32,7 +32,7 @@ public class MovingBlocks : MonoBehaviour
         SideMovement();
         SpeedIncrease();
 
-        //RotatingBlock();
+        RotatingBlock();
         //float horizontalInput = Input.GetAxis("Horizontal");
         //transform.position = transform.position + new Vector3(horizontalInput * boxSpeed, 0, 0);
 
@@ -70,7 +70,7 @@ public class MovingBlocks : MonoBehaviour
     {
         
 
-        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag=="Brick")
+        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag== "Brick")
         {
             boxSpeed = 0f;
             downMovement = 0f;

@@ -16,7 +16,7 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            transform.Rotate(0, 0, 90);
+            //transform.Rotate(0, 0, 90);
         }
     }
 }
