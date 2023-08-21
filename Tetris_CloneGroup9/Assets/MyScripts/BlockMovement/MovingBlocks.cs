@@ -16,6 +16,10 @@ public class MovingBlocks : MonoBehaviour
     private GameObject gameManager;
 
     public bool buttonsOff;
+
+    public LayerMask groundLayer;
+    public RaycastHit2D[] hit = new RaycastHit2D[5];
+    public float raycastDistance = .5f;
     private void Awake()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
