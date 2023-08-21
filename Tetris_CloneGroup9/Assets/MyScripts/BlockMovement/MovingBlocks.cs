@@ -11,9 +11,11 @@ public class MovingBlocks : MonoBehaviour
     public bool stopMoving;
 
     private Rigidbody2D rigidbody2D;
+    
     private TetrisManager tetrisManager;
     private GameObject gameManager;
 
+    public bool buttonsOff;
     private void Awake()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
@@ -24,6 +26,7 @@ public class MovingBlocks : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         tetrisManager = gameManager.GetComponent<TetrisManager>();
         stopMoving = false;
+        buttonsOff = false;
     }
 
     // Update is called once per frame
@@ -33,6 +36,22 @@ public class MovingBlocks : MonoBehaviour
         SpeedIncrease();
 
         RotatingBlock();
+
+        for (int i = 0; i <= 3; i++)
+        {
+            if (GetComponentInChildren<RayCastingBricks>().hit[i] == true)
+            {
+                boxSpeed = 0f;
+                downMovement = 0f;
+                tetrisManager.blockSpawning.spawning = true;
+                stopMoving = true;
+                //rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
+                GetComponent<MovingBlocks>().enabled = false;
+                
+               
+            }
+
+        }
         //float horizontalInput = Input.GetAxis("Horizontal");
         //transform.position = transform.position + new Vector3(horizontalInput * boxSpeed, 0, 0);
 
@@ -40,11 +59,15 @@ public class MovingBlocks : MonoBehaviour
 
     private void SideMovement()
     {
-        if (Input.GetKeyDown(KeyCode.D))
-            transform.position = transform.position + new Vector3(boxSpeed, 0, 0);
+        if (!buttonsOff)
+        {
+            if (Input.GetKeyDown(KeyCode.D))
+                transform.position = transform.position + new Vector3(boxSpeed, 0, 0);
 
-        else if(Input.GetKeyDown(KeyCode.A))
-            transform.position = transform.position + new Vector3(-boxSpeed, 0, 0);
+            else if (Input.GetKeyDown(KeyCode.A))
+                transform.position = transform.position + new Vector3(-boxSpeed, 0, 0);
+        }
+        
     }
     private void SpeedIncrease()
     {
@@ -66,25 +89,22 @@ public class MovingBlocks : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        
+    
 
-        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag== "Brick")
+    
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Brick"))
         {
-            boxSpeed = 0f;
-            downMovement = 0f;
-            tetrisManager.blockSpawning.spawning = true;
-            stopMoving = true;
-            GetComponent<MovingBlocks>().enabled = false;
-            rigidbody2D.simulated = false;
-            //rigidbody2D.enabled = false;
+            buttonsOff = true;
         }
     }
 
-    
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void StopingObject()
     {
-        
+        if (GetComponentInChildren<RayCastingBricks>().typeOfTetro == RayCastingBricks.TypeOfTetro.Straight)
+        {
+
+        }
     }
 }

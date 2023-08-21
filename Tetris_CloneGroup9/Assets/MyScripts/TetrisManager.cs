@@ -6,6 +6,7 @@ public class TetrisManager : MonoBehaviour
 {
     public BlockSpawning blockSpawning;
     private GameObject spawnPoint;
+   
     private void Awake()
     {
         spawnPoint = GameObject.FindGameObjectWithTag("SpawningBricks");
