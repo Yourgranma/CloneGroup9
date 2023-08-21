@@ -10,8 +10,9 @@ public class RayCastingBricks : MonoBehaviour
     public TypeOfTetro typeOfTetro;
     public float raycastDistance = .5f;
     public LayerMask groundLayer;
+    int layerMaskWithoutSelf;
 
-    RaycastHit2D hit;
+    RaycastHit2D[] hit=new RaycastHit2D[4];
     //References
     private GameObject gameManager;
     private TetrisManager _tetrisManager;
@@ -25,7 +26,10 @@ public class RayCastingBricks : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      
+
+
+        layerMaskWithoutSelf = groundLayer & ~(1 << gameObject.layer);
+
         rotations = Rotations.Zero;
     }
 
@@ -87,21 +91,23 @@ public class RayCastingBricks : MonoBehaviour
             {
                 if (rotations == Rotations.Zero)
                 {
-                    RaycastHit2D hit2 = Physics2D.Raycast(transform.position + new Vector3(0, 0, 0), Vector2.down, raycastDistance, groundLayer);
+                    hit[0] = Physics2D.Raycast(transform.position + new Vector3(0, 0, 0), Vector2.down, raycastDistance, layerMaskWithoutSelf);
                     Vector2 down = (transform.TransformDirection(Vector2.down)) * raycastDistance;
                     Debug.DrawRay(transform.position, down, Color.blue);
 
-                    RaycastHit2D hit3 = Physics2D.Raycast(transform.position + new Vector3(-1f, 0, 0), Vector2.down, raycastDistance, groundLayer);
-                    Vector2 brick1Down = (transform.TransformDirection(Vector2.down)) * raycastDistance;
+                    hit[1] = Physics2D.Raycast(transform.position + new Vector3(-1f, 0, 0), Vector2.down, raycastDistance, groundLayer);
                     Debug.DrawRay(transform.position + new Vector3(-1f, 0, 0), down, Color.blue);
 
-                    RaycastHit2D hit4 = Physics2D.Raycast(transform.position + new Vector3(1f, 0, 0), Vector2.down, raycastDistance, groundLayer);
-                    Vector2 brick3Down = (transform.TransformDirection(Vector2.down)) * raycastDistance;
+                    hit[2] = Physics2D.Raycast(transform.position + new Vector3(1f, 0, 0), Vector2.down, raycastDistance, groundLayer);
                     Debug.DrawRay(transform.position + new Vector3(1f, 0, 0), down, Color.blue);
 
-                    RaycastHit2D hit5 = Physics2D.Raycast(transform.position + new Vector3(2f, 0, 0), Vector2.down, raycastDistance, groundLayer);
-                    Vector2 brick4Down = (transform.TransformDirection(Vector2.down)) * raycastDistance;
+                    hit[3] = Physics2D.Raycast(transform.position + new Vector3(2f, 0, 0), Vector2.down, raycastDistance, groundLayer);
                     Debug.DrawRay(transform.position + new Vector3(2f, 0, 0), down, Color.blue);
+
+                    Debug.Log(hit[0].collider.gameObject.name);
+                    
+
+
                 }
 
                 else if (rotations == Rotations.Ninety)
