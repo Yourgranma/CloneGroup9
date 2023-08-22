@@ -432,7 +432,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dda1e923d4d1fc04cbe34134a39f4f1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brick:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   numberOfColliders: 0
+  i: 0
 --- !u!61 &633362259
 BoxCollider2D:
   m_ObjectHideFlags: 0

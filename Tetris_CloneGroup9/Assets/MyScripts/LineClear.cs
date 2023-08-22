@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class LineClear : MonoBehaviour
 {
-    GameObject[] brick = new GameObject[11];
+    public GameObject[] brick = new GameObject[11];
 
     public int numberOfColliders = 0;
+
+    public int i;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +18,12 @@ public class LineClear : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (numberOfColliders == 10)
+        if (numberOfColliders == 0)
         {
-
+            for (int i = 0; i <= 10; i++)
+            {
+                brick[i]=null;
+            }
         }
     }
 
@@ -26,21 +31,21 @@ public class LineClear : MonoBehaviour
     {
         if (collision.tag == "Brick")
         {
+            brick[numberOfColliders] = collision.gameObject;
             numberOfColliders++;
         }
 
-        if (numberOfColliders == 10)
-        {
-            Destroy(collision.gameObject);
-            
-        }
+        
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (numberOfColliders == 10)
         {
-            Destroy(collision.gameObject);
+            for(int i = 0; i <= 10; i++)
+            {
+                Destroy(brick[i]);
+            }
             numberOfColliders = 0;
         }
     }
