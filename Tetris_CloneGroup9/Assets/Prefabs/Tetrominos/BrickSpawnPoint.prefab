@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6435937831206214195}
-  - component: {fileID: 6181207873599545559}
   - component: {fileID: 7261762936871978288}
+  - component: {fileID: 5193792890990965083}
   m_Layer: 0
   m_Name: BrickSpawnPoint
   m_TagString: Untagged
@@ -34,23 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6181207873599545559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6435937831206214194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99d6be6c5729fa149a3595bdc4b9a77a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  typeOfTetro: 3
-  raycastDistance: 5
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!114 &7261762936871978288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,6 +49,32 @@ MonoBehaviour:
   boxSpeed: 1
   downMovement: 1
   stopMoving: 0
+  buttonsOff: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  raycastDistance: 1
+--- !u!50 &5193792890990965083
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6435937831206214194}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 7
 --- !u!1001 &6435937830454891866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -121,8 +130,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SquareBrick
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3674486623943198436, guid: 6c0bbb343b239164f9d149bebf87ca30, type: 3}
+    - target: {fileID: 7303407678672733243, guid: 6c0bbb343b239164f9d149bebf87ca30, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c0bbb343b239164f9d149bebf87ca30, type: 3}
 --- !u!4 &7759540831820452793 stripped
 Transform:
@@ -134,7 +146,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3674486623943198437, guid: 6c0bbb343b239164f9d149bebf87ca30, type: 3}
   m_PrefabInstance: {fileID: 6435937830454891866}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3350525938753416388
+--- !u!114 &518651693366338294
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,6 +155,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7759540831820452799}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cef1cf13a24ae8f4cb7dbf854bc79bbc, type: 3}
+  m_Script: {fileID: 11500000, guid: 99d6be6c5729fa149a3595bdc4b9a77a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotations: 0
+  typeOfTetro: 3
+  raycastDistance: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  childObjects: []

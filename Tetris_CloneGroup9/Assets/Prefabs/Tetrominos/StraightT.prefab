@@ -392,6 +392,8 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 2048
+  childObjects:
+  - {fileID: 0}
 --- !u!61 &1710913895855527414
 BoxCollider2D:
   m_ObjectHideFlags: 0

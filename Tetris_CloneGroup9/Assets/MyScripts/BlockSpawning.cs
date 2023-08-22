@@ -55,7 +55,7 @@ public class BlockSpawning : MonoBehaviour
                 break;
 
             case 4:
-                tetromino = Tetromino.Straight;
+                //tetromino = Tetromino.Straight;
                 blockPrefab = _tetromino[3];
                 break;
 

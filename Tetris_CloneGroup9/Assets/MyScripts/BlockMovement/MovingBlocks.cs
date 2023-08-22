@@ -55,6 +55,7 @@ public class MovingBlocks : MonoBehaviour
                 stopMoving = true;
                 //rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
                 GetComponent<MovingBlocks>().enabled = false;
+                Destroy(gameObject, 1);
                 
                
             }
@@ -74,11 +75,6 @@ public class MovingBlocks : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.D))
                     transform.position = transform.position + new Vector3(boxSpeed, 0, 0);
             }
-            
-           
-            
-
-
 
 
             if (!leftRaycast)
@@ -86,11 +82,7 @@ public class MovingBlocks : MonoBehaviour
                  if (Input.GetKeyDown(KeyCode.A))
                     transform.position = transform.position + new Vector3(-boxSpeed, 0, 0);
             }
-
-           
-
-
-           
+ 
         }
         
     }
@@ -110,7 +102,17 @@ public class MovingBlocks : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            transform.Rotate(0, 0, 90);
+            if(GetComponentInChildren<RayCastingBricks>().typeOfTetro != RayCastingBricks.TypeOfTetro.Square)
+            {
+                transform.Rotate(0, 0, 90);
+            }
+            
+            
+        }
+
+        if (transform.rotation.eulerAngles.z ==180 && GetComponentInChildren<RayCastingBricks>().typeOfTetro == RayCastingBricks.TypeOfTetro.Straight)
+        {
+            transform.localEulerAngles =new Vector3(0,0, 0);
         }
     }
 
@@ -491,16 +493,34 @@ public class MovingBlocks : MonoBehaviour
                     leftRaycast = false;
                 }
 
-
-
-
-
-                if (hit[14] == true)
-                {
-                    Debug.Log("Touched2");
-                }
             }
 
+        }
+
+
+        else if(GetComponentInChildren<RayCastingBricks>().typeOfTetro == RayCastingBricks.TypeOfTetro.Square)
+        {
+            Vector2 left = (transform.TransformDirection(Vector2.left)) * raycastDistance;
+            hit[0] = Physics2D.Raycast(transform.position + new Vector3(-1f, 0.55f, 0), Vector2.left, raycastDistance, groundLayer);
+            Debug.DrawRay(transform.position + new Vector3(-1f, .55f, 0), left, Color.green);
+
+            hit[1] = Physics2D.Raycast(transform.position + new Vector3(-1f, 0, 0), Vector2.left, raycastDistance, groundLayer);
+            Debug.DrawRay(transform.position + new Vector3(-1f, 0, 0), left, Color.red);
+
+            hit[2] = Physics2D.Raycast(transform.position + new Vector3(-1f, -.5f, 0), Vector2.left, raycastDistance, groundLayer);
+            Debug.DrawRay(transform.position + new Vector3(-1f, -.5f, 0), left, Color.blue);
+
+            if (hit[0] == true || hit[1] == true || hit[2] == true)
+            {
+                leftRaycast = true;
+
+                //turn of Left movement
+            }
+
+            else if (hit[0] == false || hit[1] == false || hit[2] == false)
+            {
+                leftRaycast = false;
+            }
         }
     }
 }

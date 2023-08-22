@@ -12,10 +12,16 @@ public class RayCastingBricks : MonoBehaviour
     public LayerMask groundLayer;
     int layerMaskWithoutSelf;
 
+
+
     public RaycastHit2D[] hit=new RaycastHit2D[5];
+
+
     //References
     private GameObject gameManager;
     private TetrisManager _tetrisManager;
+
+    public GameObject[] childObjects;
 
     private void Awake()
     {
@@ -30,27 +36,32 @@ public class RayCastingBricks : MonoBehaviour
     void Start()
     {
 
+        int childCount = transform.childCount;
+        childObjects = new GameObject[childCount];
+
+        // Store each child in the array
+        for (int j = 0; j < childCount; j++)
+        {
+            childObjects[j] = transform.GetChild(j).gameObject;
+        }
+        
         int i = 3;
         LayerMask changeLayer;
         changeLayer = i;
-        
-
         rotations = Rotations.Zero;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-
         RaycastStraight();
-        RayCastTests();
-        if (transform.rotation.eulerAngles.z == 270)
-        {
-            //transform.Rotate(0, 0, -90);
-        }
+        RaycastSquare();
+        ObjRotation();
+        
+    }
 
-       
+    private void ObjRotation()
+    {
         if (transform.rotation.eulerAngles.z == 0)
         {
             rotations = Rotations.Zero;
@@ -66,7 +77,7 @@ public class RayCastingBricks : MonoBehaviour
             rotations = Rotations.OneEighty;
         }
 
-        else if (transform.rotation.eulerAngles.z ==270)
+        else if (transform.rotation.eulerAngles.z == 270)
         {
             rotations = Rotations.MinusNinety;
         }
@@ -74,21 +85,7 @@ public class RayCastingBricks : MonoBehaviour
         Debug.Log(transform.rotation.eulerAngles.z);
     }
 
-    private void RayCastTests()
-    {
-
-       
-    }
-    void RaycastSquare()
-    {
-
-    }
-
-    void RaycastT()
-    {
-
-    }
-
+    //for stopping The Tetromino from moving
     public void RaycastStraight()
     {
         if (typeOfTetro == TypeOfTetro.Straight)
@@ -110,22 +107,8 @@ public class RayCastingBricks : MonoBehaviour
                     hit[3] = Physics2D.Raycast(transform.position + new Vector3(2f, 0, 0), Vector2.down, raycastDistance, groundLayer);
                     Debug.DrawRay(transform.position + new Vector3(2f, 0, 0), down, Color.blue);
 
-                    for (int i = 0; i <= 3; i++)
-                    {
-                        if (hit[i] == true)
-                        {
-                            int LayerIgnoreRayCast = LayerMask.NameToLayer("MainBrick");
-                            gameObject.layer = LayerIgnoreRayCast;
-                        }
 
-                    }
-                    
-
-                   
-                    
-                    
-                    
-
+                    StraightTetromino();
 
                 }
 
@@ -135,12 +118,7 @@ public class RayCastingBricks : MonoBehaviour
                     Vector2 left = (transform.TransformDirection(Vector2.left)) * raycastDistance;
                     Debug.DrawRay(transform.position + new Vector3(0, -1f, 0), left, Color.blue);
 
-                    if (hit[0] == true)
-                    {
-                        Debug.Log("Ive Hit something");
-                        int LayerIgnoreRayCast = LayerMask.NameToLayer("MainBrick");
-                        gameObject.layer = LayerIgnoreRayCast;
-                    }
+                    StraightTetromino();
 
                 }
 
@@ -159,15 +137,7 @@ public class RayCastingBricks : MonoBehaviour
                     hit[3] = Physics2D.Raycast(transform.position + new Vector3(-2f, 0, 0), Vector2.down, raycastDistance, groundLayer);
                     Debug.DrawRay(transform.position + new Vector3(-2f, 0, 0), up, Color.blue);
 
-                    for (int i = 0; i <= 3; i++)
-                    {
-                        if (hit[i] == true)
-                        {
-                            int LayerIgnoreRayCast = LayerMask.NameToLayer("MainBrick");
-                            gameObject.layer = LayerIgnoreRayCast;
-                        }
-
-                    }
+                    StraightTetromino();
                 }
                 
                 else if (rotations == Rotations.MinusNinety)
@@ -176,16 +146,50 @@ public class RayCastingBricks : MonoBehaviour
                     Vector2 right = (transform.TransformDirection(Vector2.right)) * raycastDistance;
                     Debug.DrawRay(transform.position + new Vector3(0, -2f, 0), right, Color.red);
 
-                    if (hit[0] == true)
-                    {
-                        int LayerIgnoreRayCast = LayerMask.NameToLayer("MainBrick");
-                        gameObject.layer = LayerIgnoreRayCast;
-                    }
+                    StraightTetromino();
                 }
             }
         }
         
         
+    }
+
+    public void RaycastSquare()
+    {
+        if (typeOfTetro == TypeOfTetro.Square)
+        {
+            //rotation must always be at zero
+            Vector2 down = (transform.TransformDirection(Vector2.down)) ;
+            hit[0] = Physics2D.Raycast(transform.position + new Vector3(.5f, -.5f, 0), Vector2.down, raycastDistance, groundLayer);
+            Debug.DrawRay(transform.position + new Vector3(.5f, -.5f, 0), down, Color.blue);
+
+
+            hit[1] = Physics2D.Raycast(transform.position + new Vector3(-.5f, -.5f, 0), Vector2.down, raycastDistance, groundLayer);
+            Debug.DrawRay(transform.position + new Vector3(-.5f, -.5f, 0), down, Color.blue);
+
+            StraightTetromino();
+        }
+    }
+    private void StraightTetromino()
+    {
+        for (int i = 0; i <= 3; i++)
+        {
+            if (hit[i] == true)
+            {
+                int LayerIgnoreRayCast = LayerMask.NameToLayer("MainBrick");
+                gameObject.layer = LayerIgnoreRayCast;
+
+                for (int j = 0; j <= 3; j++)
+                {
+
+                    childObjects[j].layer = LayerIgnoreRayCast; ;
+                    childObjects[j].transform.SetParent(null);
+                }
+
+                //Destroy(gameObject, .1f);
+            }
+
+        }
     }
 
     public void RaycastSkew()

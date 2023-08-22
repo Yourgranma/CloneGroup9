@@ -44,7 +44,7 @@ public class LineClear : MonoBehaviour
         {
             for(int i = 0; i <= 10; i++)
             {
-                Destroy(brick[i]);
+                Destroy(brick[i],2f);
             }
             numberOfColliders = 0;
         }
