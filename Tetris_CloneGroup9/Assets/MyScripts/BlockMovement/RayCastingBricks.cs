@@ -56,6 +56,7 @@ public class RayCastingBricks : MonoBehaviour
     {
         RaycastStraight();
         RaycastSquare();
+        RaycastL();
         ObjRotation();
         
     }
@@ -199,6 +200,74 @@ public class RayCastingBricks : MonoBehaviour
 
     public void RaycastL()
     {
+        if (typeOfTetro == TypeOfTetro.L)
+        {
+            if (rotations == Rotations.Zero)
+            {
+                hit[0] = Physics2D.Raycast(transform.position + new Vector3(0, 0, 0), Vector2.down, raycastDistance, groundLayer);
+                Vector2 down = (transform.TransformDirection(Vector2.down)) * raycastDistance;
+                Debug.DrawRay(transform.position, down, Color.blue);
 
+                hit[1] = Physics2D.Raycast(transform.position + new Vector3(-1f, 0, 0), Vector2.down, raycastDistance, groundLayer);
+                Debug.DrawRay(transform.position + new Vector3(-1f, 0, 0), down, Color.blue);
+
+                hit[2] = Physics2D.Raycast(transform.position + new Vector3(1f, 0, 0), Vector2.down, raycastDistance, groundLayer);
+                Debug.DrawRay(transform.position + new Vector3(1f, 0, 0), down, Color.blue);
+
+               
+
+
+                StraightTetromino();
+
+            }
+
+            if (rotations == Rotations.Ninety)
+            {
+                hit[0] = Physics2D.Raycast(transform.position + new Vector3(0, -1f, 0), Vector2.down, raycastDistance, groundLayer);
+                Vector2 left = (transform.TransformDirection(Vector2.left)) * raycastDistance;
+                Debug.DrawRay(transform.position + new Vector3(0, -1f, 0), left, Color.blue);
+
+                hit[1] = Physics2D.Raycast(transform.position + new Vector3(-1, 1, 0), Vector2.down, raycastDistance, groundLayer);
+                
+                Debug.DrawRay(transform.position + new Vector3(-1,1, 0), left, Color.blue);
+
+                StraightTetromino();
+
+            }
+
+            if (rotations == Rotations.OneEighty)
+            {
+                hit[0] = Physics2D.Raycast(transform.position + new Vector3(0, 0, 0), Vector2.down, raycastDistance, groundLayer);
+                Vector2 up = (transform.TransformDirection(Vector2.up)) * raycastDistance;
+                Debug.DrawRay(transform.position, up, Color.blue);
+
+                hit[1] = Physics2D.Raycast(transform.position + new Vector3(1f, 0, 0), Vector2.down, raycastDistance, groundLayer);
+                Debug.DrawRay(transform.position + new Vector3(1f, 0, 0), up, Color.blue);
+
+                hit[2] = Physics2D.Raycast(transform.position + new Vector3(-1f, -1, 0), Vector2.down, raycastDistance, groundLayer);
+                Debug.DrawRay(transform.position + new Vector3(-1f, -1, 0), up, Color.magenta);
+
+                if (hit[2])
+                {
+                    Debug.Log("Touched");
+                }
+                StraightTetromino();
+            }
+
+            if (rotations == Rotations.MinusNinety)
+            {
+                
+                Vector2 right = (transform.TransformDirection(Vector2.right)) * raycastDistance;
+                hit[0] = Physics2D.Raycast(transform.position + new Vector3(0, -1f, 0), Vector2.down, raycastDistance, groundLayer);
+                Debug.DrawRay(transform.position + new Vector3(0, -1f, 0), right, Color.blue);
+
+
+                hit[1] = Physics2D.Raycast(transform.position + new Vector3(1, -1f, 0), Vector2.down, raycastDistance, groundLayer);
+                Debug.DrawRay(transform.position + new Vector3(1, -1f, 0), right, Color.blue);
+                StraightTetromino();
+            }
+
+
+        }
     }
 }

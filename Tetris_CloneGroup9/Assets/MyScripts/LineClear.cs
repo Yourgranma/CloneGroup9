@@ -6,16 +6,18 @@ public class LineClear : MonoBehaviour
 {
     public GameObject[] brick = new GameObject[10];
 
-    //public List<GameObject> bricks = new List<GameObject>();
+    public List<GameObject> bricks = new List<GameObject>();
     public int numberOfColliders = 0;
     //GameObject[] objectsToDestroy = new GameObject[10];
     public int i;
 
     bool destroy;
+    bool waitToAdd;
     // Start is called before the first frame update
     void Start()
     {
         destroy = false;
+        waitToAdd = false;
     }
 
     // Update is called once per frame
@@ -25,29 +27,24 @@ public class LineClear : MonoBehaviour
         {
             for (int i = 0; i <= 9; i++)
             {
-                brick[i]=null;
+               // brick[i]=null;
             }
         }
-
-        if (destroy)
-        {
-            
-            //Destroy(collision.gameObject, 2f);
-            for (int i = 0; i <= 9; i++)
-            {
-                Destroy(brick[i]);
-
-            }
-        }
+          
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.tag == "Brick")
         {
-            
-            brick[numberOfColliders] = collision.gameObject;
+            bricks.Add(GameObject.Find(collision.name));
+            //brick[numberOfColliders] = collision.gameObject;
             numberOfColliders++;
+            if (numberOfColliders == 10)
+            {
+                StartCoroutine(Destroying());
+            }
         }
 
         
@@ -55,24 +52,46 @@ public class LineClear : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+
         if (numberOfColliders == 10)
         {
-            StartCoroutine(Destroying());
+
+
+            brick[0] = GameObject.Find(bricks[0].name);
+            brick[1] = GameObject.Find(bricks[1].name);
+            brick[2] = GameObject.Find(bricks[2].name);
+            brick[3] = GameObject.Find(bricks[3].name);
+            brick[4] = GameObject.Find(bricks[4].name);
+            brick[5] = GameObject.Find(bricks[5].name);
+            brick[6] = GameObject.Find(bricks[6].name);
+            brick[7] = GameObject.Find(bricks[7].name);
+            brick[8] = GameObject.Find(bricks[8].name);
+            brick[9] = GameObject.Find(bricks[9].name);
+            //Destroy(collision.gameObject, 2f);
+            for (int i = 0; i <= 9; i++)
+            {
+
+
+                Destroy(brick[i]);
+
+            }
             numberOfColliders = 0;
         }
+        
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Brick")
+        if (collision.tag=="Brick")
         {
+            //brick[numberOfColliders-1] = null;
+            
+            GameObject gameObjectoRemove = GameObject.Find(collision.name) ;
+            bricks.Remove(gameObjectoRemove);
             --numberOfColliders;
-            //GameObject gameObjectoRemove = GameObject.Find(brick[numberOfColliders].name) ;
-            brick[numberOfColliders] = null;
 
-            //bricks.Remove(gameObjectoRemove);
-            
-            
+
         }
         
     }
@@ -83,4 +102,6 @@ public class LineClear : MonoBehaviour
         yield return new WaitForSeconds(2);
         destroy = true;
     }
+
+   
 }
