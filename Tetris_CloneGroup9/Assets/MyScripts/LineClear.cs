@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class LineClear : MonoBehaviour
 {
-    public GameObject[] brick = new GameObject[11];
+    public GameObject[] brick = new GameObject[10];
 
+    //public List<GameObject> bricks = new List<GameObject>();
     public int numberOfColliders = 0;
-
+    //GameObject[] objectsToDestroy = new GameObject[10];
     public int i;
+
+    bool destroy;
     // Start is called before the first frame update
     void Start()
     {
-        
+        destroy = false;
     }
 
     // Update is called once per frame
@@ -20,9 +23,20 @@ public class LineClear : MonoBehaviour
     {
         if (numberOfColliders == 0)
         {
-            for (int i = 0; i <= 10; i++)
+            for (int i = 0; i <= 9; i++)
             {
                 brick[i]=null;
+            }
+        }
+
+        if (destroy)
+        {
+            
+            //Destroy(collision.gameObject, 2f);
+            for (int i = 0; i <= 9; i++)
+            {
+                Destroy(brick[i]);
+
             }
         }
     }
@@ -31,6 +45,7 @@ public class LineClear : MonoBehaviour
     {
         if (collision.tag == "Brick")
         {
+            
             brick[numberOfColliders] = collision.gameObject;
             numberOfColliders++;
         }
@@ -42,11 +57,30 @@ public class LineClear : MonoBehaviour
     {
         if (numberOfColliders == 10)
         {
-            for(int i = 0; i <= 10; i++)
-            {
-                Destroy(brick[i],2f);
-            }
+            StartCoroutine(Destroying());
             numberOfColliders = 0;
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Brick")
+        {
+            --numberOfColliders;
+            //GameObject gameObjectoRemove = GameObject.Find(brick[numberOfColliders].name) ;
+            brick[numberOfColliders] = null;
+
+            //bricks.Remove(gameObjectoRemove);
+            
+            
+        }
+        
+    }
+
+    IEnumerator Destroying()
+    {
+        destroy = false;
+        yield return new WaitForSeconds(2);
+        destroy = true;
     }
 }
