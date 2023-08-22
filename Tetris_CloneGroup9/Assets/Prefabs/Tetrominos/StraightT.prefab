@@ -163,6 +163,10 @@ MonoBehaviour:
   downMovement: 1
   stopMoving: 0
   buttonsOff: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  raycastDistance: 1
 --- !u!114 &8750814989371372790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,7 +207,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 738663650847483817}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
