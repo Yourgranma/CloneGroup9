@@ -45,7 +45,7 @@ public class MovingBlocks : MonoBehaviour
 
         RotatingBlock();
         StopingObject();
-        T_Shaped();
+        
 
         for (int i = 0; i <= 3; i++)
         {
@@ -570,14 +570,14 @@ public class MovingBlocks : MonoBehaviour
 
         }
 
-
-        _lShape();
+        T_Shaped();
+        _LShape();
         _SkweShape();
 
     }
 
 
-    private void _lShape()
+    private void _LShape()
     {
         if (GetComponentInChildren<RayCastingBricks>().typeOfTetro == RayCastingBricks.TypeOfTetro.L)
         {
@@ -586,23 +586,30 @@ public class MovingBlocks : MonoBehaviour
 
                 //Left Racast
                 Vector2 left = (transform.TransformDirection(Vector2.left)) * raycastDistance;
-                hit[0] = Physics2D.Raycast(transform.position + new Vector3(-1f, 0.55f, 0), Vector2.left, raycastDistance, groundLayer);
+                hit[0] = Physics2D.Raycast(transform.position + new Vector3(1, 1.5f, 0), Vector2.left, raycastDistance, groundLayer);
+                Debug.DrawRay(transform.position + new Vector3(1, 1.5f, 0), left, Color.red);
+
+                hit[1] = Physics2D.Raycast(transform.position + new Vector3(1, 1f, 0), Vector2.left, raycastDistance, groundLayer);
+                Debug.DrawRay(transform.position + new Vector3(1, 1, 0), left, Color.blue);      
+                
+                hit[2] = Physics2D.Raycast(transform.position + new Vector3(-1f, 0.55f, 0), Vector2.left, raycastDistance, groundLayer);
                 Debug.DrawRay(transform.position + new Vector3(-1f, .55f, 0), left, Color.green);
 
-                hit[1] = Physics2D.Raycast(transform.position + new Vector3(-1f, 0, 0), Vector2.left, raycastDistance, groundLayer);
+                hit[3] = Physics2D.Raycast(transform.position + new Vector3(-1f, 0, 0), Vector2.left, raycastDistance, groundLayer);
                 Debug.DrawRay(transform.position + new Vector3(-1f, 0, 0), left, Color.red);
 
-                hit[2] = Physics2D.Raycast(transform.position + new Vector3(-1f, -.5f, 0), Vector2.left, raycastDistance, groundLayer);
+                hit[4] = Physics2D.Raycast(transform.position + new Vector3(-1f, -.5f, 0), Vector2.left, raycastDistance, groundLayer);
                 Debug.DrawRay(transform.position + new Vector3(-1f, -.5f, 0), left, Color.blue);
 
-                if (hit[0] == true || hit[1] == true || hit[2] == true)
+
+                if (hit[0] == true || hit[1] == true || hit[2] == true || hit[3] == true || hit[4] == true)
                 {
                     leftRaycast = true;
 
                     //turn of Left movement
                 }
 
-                else if (hit[0] == false || hit[1] == false || hit[2] == false)
+                else if (hit[0] == false || hit[1] == false || hit[2] == false || hit[3] == false || hit[4] == false)
                 {
                     leftRaycast = false;
                 }
@@ -615,34 +622,34 @@ public class MovingBlocks : MonoBehaviour
                 Vector2 right = (transform.TransformDirection(Vector2.right)) * raycastDistance;
                 
 
-                hit[3] = Physics2D.Raycast(transform.position + new Vector3(0f, 1.5f, 0), Vector2.right, raycastDistance, groundLayer);
+                hit[5] = Physics2D.Raycast(transform.position + new Vector3(0f, 1.5f, 0), Vector2.right, raycastDistance, groundLayer);
                 Debug.DrawRay(transform.position + new Vector3(1f, 1.5f, 0), right, Color.red);
 
-                hit[4] = Physics2D.Raycast(transform.position + new Vector3(0.5f, 1f, 0), Vector2.right, raycastDistance, groundLayer);
+                hit[6] = Physics2D.Raycast(transform.position + new Vector3(0.5f, 1f, 0), Vector2.right, raycastDistance, groundLayer);
                 Debug.DrawRay(transform.position + new Vector3(1f, 1f, 0), right, Color.blue);
 
 
-                hit[5] = Physics2D.Raycast(transform.position + new Vector3(0.5f, 0.5f, 0), Vector2.right, raycastDistance, groundLayer);
+                hit[7] = Physics2D.Raycast(transform.position + new Vector3(0.5f, 0.5f, 0), Vector2.right, raycastDistance, groundLayer);
                 
                 Debug.DrawRay(transform.position + new Vector3(1f, .5f, 0), right, Color.blue);
 
-                hit[6] = Physics2D.Raycast(transform.position + new Vector3(0f, 0, 0), Vector2.right, raycastDistance, groundLayer);
+                hit[8] = Physics2D.Raycast(transform.position + new Vector3(0f, 0, 0), Vector2.right, raycastDistance, groundLayer);
                 Debug.DrawRay(transform.position + new Vector3(1f, 0, 0), right, Color.red);
 
-                hit[7] = Physics2D.Raycast(transform.position + new Vector3(0.5f, -.5f, 0), Vector2.right, raycastDistance, groundLayer);
+                hit[9] = Physics2D.Raycast(transform.position + new Vector3(0.5f, -.5f, 0), Vector2.right, raycastDistance, groundLayer);
                 Debug.DrawRay(transform.position + new Vector3(1f, -.5f, 0), right, Color.magenta);
 
                 
                 
 
-                if (hit[3] == true || hit[4] == true || hit[5] == true || hit[6] == true || hit[7] == true )
+                if (hit[5] == true || hit[6] == true || hit[7] == true || hit[8] == true || hit[9] == true )
                 {
                     rightRaycast = true;
 
                     //turn of Left movement
                 }
 
-                else if (hit[3] == false || hit[4] == false || hit[5] == false || hit[6] == false || hit[7] == false)
+                else if (hit[5] == false || hit[6] == false || hit[7] == false || hit[8] == false || hit[9] == false )
                 {
                     rightRaycast = false;
                 }
@@ -709,12 +716,12 @@ public class MovingBlocks : MonoBehaviour
                 //up block raycasts
                 
 
-                hit[7] = Physics2D.Raycast(transform.position + new Vector3(0, 1.5f, 0), Vector2.right, raycastDistance, groundLayer);
+                hit[14] = Physics2D.Raycast(transform.position + new Vector3(0, 1.5f, 0), Vector2.right, raycastDistance, groundLayer);
                 Debug.DrawRay(transform.position + new Vector3(1f, 1.5f, 0), right, Color.red);
 
 
 
-                hit[8] = Physics2D.Raycast(transform.position + new Vector3(0, 1, 0), Vector2.right, raycastDistance, groundLayer);
+                hit[15] = Physics2D.Raycast(transform.position + new Vector3(0, 1, 0), Vector2.right, raycastDistance, groundLayer);
                 Debug.DrawRay(transform.position + new Vector3(1f, 1, 0), right, Color.red);
 
                 hit[9] = Physics2D.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector2.right, raycastDistance, groundLayer);
@@ -737,13 +744,13 @@ public class MovingBlocks : MonoBehaviour
                 hit[13] = Physics2D.Raycast(transform.position + new Vector3(0, -1f, 0), Vector2.right, raycastDistance, groundLayer);
                 Debug.DrawRay(transform.position + new Vector3(1f, -1f, 0), right, Color.red);
 
-                if (hit[7] == true || hit[8] == true || hit[9] == true || hit[10] == true || hit[11] == true || hit[12] == true || hit[13] == true )
+                if (hit[14] == true || hit[15] == true || hit[9] == true || hit[10] == true || hit[11] == true || hit[12] == true || hit[13] == true )
                 {
                     rightRaycast = true;
 
                 }
 
-                else if (hit[7] == false || hit[8] == false || hit[9] == false || hit[10] == false || hit[11] == false || hit[12] == false || hit[13] == false )
+                else if (hit[14] == false || hit[15] == false || hit[9] == false || hit[10] == false || hit[11] == false || hit[12] == false || hit[13] == false )
                 {
                     rightRaycast = false;
                 }
@@ -768,14 +775,21 @@ public class MovingBlocks : MonoBehaviour
                 hit[2] = Physics2D.Raycast(transform.position + new Vector3(1, -.4f, 0), Vector2.right, raycastDistance, groundLayer);
                 Debug.DrawRay(transform.position + new Vector3(1f, -.4f, 0), left, Color.blue);
 
-                if (hit[0] == true || hit[1] == true || hit[2] == true)
+                hit[3] = Physics2D.Raycast(transform.position + new Vector3(-1, -1, 0), Vector2.right, raycastDistance, groundLayer);
+                Debug.DrawRay(transform.position + new Vector3(-1, -1, 0), left, Color.red);
+
+                hit[4] = Physics2D.Raycast(transform.position + new Vector3(-1, -1.5f, 0), Vector2.right, raycastDistance, groundLayer);
+                Debug.DrawRay(transform.position + new Vector3(-1, -1.5f, 0), left, Color.blue);
+
+
+                if (hit[0] == true || hit[1] == true || hit[2] == true || hit[3] == true || hit[4] == true)
                 {
                     rightRaycast = true;
 
                     //turn of Left movement
                 }
 
-                else if (hit[0] == false || hit[1] == false || hit[2] == false)
+                else if (hit[0] == false || hit[1] == false || hit[2] == false || hit[3] == false || hit[4] == false)
                 {
                     rightRaycast = false;
                 }
@@ -786,32 +800,32 @@ public class MovingBlocks : MonoBehaviour
                 Vector2 right = (transform.TransformDirection(Vector2.right)) * raycastDistance;
 
 
-                hit[3] = Physics2D.Raycast(transform.position + new Vector3(-.5f, 0.4f, 0), Vector2.left, raycastDistance, groundLayer);
+                hit[5] = Physics2D.Raycast(transform.position + new Vector3(-.5f, 0.4f, 0), Vector2.left, raycastDistance, groundLayer);
 
                 Debug.DrawRay(transform.position + new Vector3(-1f, .4f, 0), right, Color.red);
 
-                hit[4] = Physics2D.Raycast(transform.position + new Vector3(-.5f, 0, 0), Vector2.left, raycastDistance, groundLayer);
+                hit[6] = Physics2D.Raycast(transform.position + new Vector3(-.5f, 0, 0), Vector2.left, raycastDistance, groundLayer);
                 Debug.DrawRay(transform.position + new Vector3(-1f, 0, 0), right, Color.green);
 
-                hit[5] = Physics2D.Raycast(transform.position + new Vector3(-.5f, -.4f, 0), Vector2.left, raycastDistance, groundLayer);
+                hit[7] = Physics2D.Raycast(transform.position + new Vector3(-.5f, -.4f, 0), Vector2.left, raycastDistance, groundLayer);
                 Debug.DrawRay(transform.position + new Vector3(-1f, -.4f, 0), right, Color.red);
 
 
-                hit[6] = Physics2D.Raycast(transform.position + new Vector3(-.5f, -1.5f, 0), Vector2.left, raycastDistance, groundLayer);
+                hit[8] = Physics2D.Raycast(transform.position + new Vector3(-.5f, -1.5f, 0), Vector2.left, raycastDistance, groundLayer);
 
                 Debug.DrawRay(transform.position + new Vector3(-1f, -1.5f, 0), right, Color.red);
 
-                hit[7] = Physics2D.Raycast(transform.position + new Vector3(-.5f, -1, 0), Vector2.left, raycastDistance, groundLayer);
+                hit[9] = Physics2D.Raycast(transform.position + new Vector3(-.5f, -1, 0), Vector2.left, raycastDistance, groundLayer);
                 Debug.DrawRay(transform.position + new Vector3(-1f, -1, 0), right, Color.green);
 
-                if (hit[3] == true || hit[4] == true || hit[5] == true || hit[6] == true || hit[7] == true)
+                if ( hit[5] == true || hit[6] == true || hit[7] == true  || hit[8] == true || hit[9] == true )
                 {
                     leftRaycast = true;
 
                     //turn of Left movement
                 }
 
-                else if (hit[3] == false || hit[4] == false || hit[5] == false || hit[6] == false || hit[7] == false)
+                else if ( hit[5] == false || hit[6] == false || hit[7] == false || hit[8] == false || hit[9] == false)
                 {
                     leftRaycast = false;
                 }
@@ -1121,7 +1135,13 @@ public class MovingBlocks : MonoBehaviour
                 hit[2] = Physics2D.Raycast(transform.position + new Vector3(-1f, -.5f, 0), Vector2.left, raycastDistance, groundLayer);
                 Debug.DrawRay(transform.position + new Vector3(-1f, -.5f, 0), left, Color.blue);
 
-                if (hit[0] == true || hit[1] == true || hit[2] == true)
+                hit[3] = Physics2D.Raycast(transform.position + new Vector3(0f, 1, 0), Vector2.left, raycastDistance, groundLayer);
+                Debug.DrawRay(transform.position + new Vector3(-0, 1, 0), left, Color.red);
+
+                hit[4] = Physics2D.Raycast(transform.position + new Vector3(-1f, 1.5f, 0), Vector2.left, raycastDistance, groundLayer);
+                Debug.DrawRay(transform.position + new Vector3(0, 1.5f, 0), left, Color.blue);
+
+                if (hit[0] == true || hit[1] == true || hit[2] == true || hit[3] == true || hit[4] == true)
                 {
                     leftRaycast = true;
 
@@ -1294,14 +1314,20 @@ public class MovingBlocks : MonoBehaviour
                 hit[2] = Physics2D.Raycast(transform.position + new Vector3(1, -.4f, 0), Vector2.right, raycastDistance, groundLayer);
                 Debug.DrawRay(transform.position + new Vector3(1f, -.4f, 0), left, Color.blue);
 
-                if (hit[0] == true || hit[1] == true || hit[2] == true)
+                hit[3] = Physics2D.Raycast(transform.position + new Vector3(0, -1f, 0), Vector2.right, raycastDistance, groundLayer);
+                Debug.DrawRay(transform.position + new Vector3(0, -1, 0), left, Color.red);
+
+                hit[4] = Physics2D.Raycast(transform.position + new Vector3(0, -1.5f, 0), Vector2.right, raycastDistance, groundLayer);
+                Debug.DrawRay(transform.position + new Vector3(0, -1.5f, 0), left, Color.blue);
+
+                if (hit[0] == true || hit[1] == true || hit[2] == true || hit[3] == true || hit[4] == true)
                 {
                     rightRaycast = true;
 
                     //turn of Left movement
                 }
 
-                else if (hit[0] == false || hit[1] == false || hit[2] == false)
+                else if (hit[0] == false || hit[1] == false || hit[2] == false || hit[3] == false || hit[4] == false)
                 {
                     rightRaycast = false;
                 }
@@ -1325,10 +1351,10 @@ public class MovingBlocks : MonoBehaviour
 
                 hit[6] = Physics2D.Raycast(transform.position + new Vector3(-.5f, -1.5f, 0), Vector2.left, raycastDistance, groundLayer);
 
-                Debug.DrawRay(transform.position + new Vector3(-1f, -1.5f, 0), right, Color.red);
+                Debug.DrawRay(transform.position + new Vector3(0f, -1.5f, 0), right, Color.red);
 
-                hit[7] = Physics2D.Raycast(transform.position + new Vector3(-.5f, -1, 0), Vector2.left, raycastDistance, groundLayer);
-                Debug.DrawRay(transform.position + new Vector3(-1f, -1, 0), right, Color.green);
+                hit[7] = Physics2D.Raycast(transform.position + new Vector3(0, -1, 0), Vector2.left, raycastDistance, groundLayer);
+                Debug.DrawRay(transform.position + new Vector3(0, -1, 0), right, Color.green);
 
                 if (hit[3] == true || hit[4] == true || hit[5] == true || hit[6] == true || hit[7] == true)
                 {
@@ -1356,30 +1382,30 @@ public class MovingBlocks : MonoBehaviour
                 //up block raycasts
 
 
-                hit[2] = Physics2D.Raycast(transform.position + new Vector3(1, -1.5f, 0), Vector2.right, raycastDistance, groundLayer);
-                Debug.DrawRay(transform.position + new Vector3(1f, -1.5f, 0), left, Color.red);
+                hit[2] = Physics2D.Raycast(transform.position + new Vector3(0, -1.5f, 0), Vector2.right, raycastDistance, groundLayer);
+                Debug.DrawRay(transform.position + new Vector3(0, -1.5f, 0), left, Color.red);
 
 
 
-                hit[3] = Physics2D.Raycast(transform.position + new Vector3(1, -1f, 0), Vector2.right, raycastDistance, groundLayer);
-                Debug.DrawRay(transform.position + new Vector3(1f, -1f, 0), left, Color.red);
+                hit[3] = Physics2D.Raycast(transform.position + new Vector3(0, -1f, 0), Vector2.right, raycastDistance, groundLayer);
+                Debug.DrawRay(transform.position + new Vector3(0, -1f, 0), left, Color.red);
 
                 hit[4] = Physics2D.Raycast(transform.position + new Vector3(1, -.5f, 0), Vector2.right, raycastDistance, groundLayer);
                 Debug.DrawRay(transform.position + new Vector3(1f, -.5f, 0), left, Color.red);
 
-                hit[5] = Physics2D.Raycast(transform.position + new Vector3(0, 0, 0), Vector2.right, raycastDistance, groundLayer);
-                Debug.DrawRay(transform.position + new Vector3(0f, 0f, 0), left, Color.red);
+                hit[5] = Physics2D.Raycast(transform.position + new Vector3(1, 0, 0), Vector2.right, raycastDistance, groundLayer);
+                Debug.DrawRay(transform.position + new Vector3(1, 0f, 0), left, Color.red);
 
 
 
-                hit[6] = Physics2D.Raycast(transform.position + new Vector3(0, .5f, 0), Vector2.right, raycastDistance, groundLayer);
-                Debug.DrawRay(transform.position + new Vector3(0f, .5f, 0), left, Color.red);
+                hit[6] = Physics2D.Raycast(transform.position + new Vector3(1, .5f, 0), Vector2.right, raycastDistance, groundLayer);
+                Debug.DrawRay(transform.position + new Vector3(1, .5f, 0), left, Color.red);
 
                 hit[7] = Physics2D.Raycast(transform.position + new Vector3(0, 1, 0), Vector2.right, raycastDistance, groundLayer);
-                Debug.DrawRay(transform.position + new Vector3(0f, 1, 0), left, Color.red);
+                Debug.DrawRay(transform.position + new Vector3(0, 1, 0), left, Color.red);
 
                 hit[8] = Physics2D.Raycast(transform.position + new Vector3(0, 1.5f, 0), Vector2.right, raycastDistance, groundLayer);
-                Debug.DrawRay(transform.position + new Vector3(0f, 1.5f, 0), left, Color.red);
+                Debug.DrawRay(transform.position + new Vector3(0, 1.5f, 0), left, Color.red);
 
                 if (hit[0] == true || hit[1] == true || hit[2] == true || hit[3] == true || hit[4] == true || hit[5] == true || hit[6] == true || hit[7] == true || hit[8] == true)
                 {

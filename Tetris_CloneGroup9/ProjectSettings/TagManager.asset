@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - SpawningBricks
   - GameManager
+  - Block
   layers:
   - Default
   - TransparentFX

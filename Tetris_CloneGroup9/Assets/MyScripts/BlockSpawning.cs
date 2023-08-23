@@ -43,23 +43,28 @@ public class BlockSpawning : MonoBehaviour
         {
             
             case 1:
+                tetromino = Tetromino.Square;
                 blockPrefab = _tetromino[0];
                 break;
 
             case 2:
+                tetromino = Tetromino.L;
                 blockPrefab = _tetromino[1];
                 break;
 
             case 3:
+                tetromino = Tetromino.Skew;
                 blockPrefab = _tetromino[2];
                 break;
 
             case 4:
-                //tetromino = Tetromino.Straight;
+                tetromino = Tetromino.Straight;
+
                 blockPrefab = _tetromino[3];
                 break;
 
             case 5:
+                tetromino = Tetromino.T;
                 blockPrefab = _tetromino[4];
                 break;
         }

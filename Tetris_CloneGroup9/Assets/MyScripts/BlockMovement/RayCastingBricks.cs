@@ -35,7 +35,7 @@ public class RayCastingBricks : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
         int childCount = transform.childCount;
         childObjects = new GameObject[childCount];
 

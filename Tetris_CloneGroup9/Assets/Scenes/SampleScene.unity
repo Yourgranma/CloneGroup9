@@ -1596,7 +1596,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2096384750}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5, y: -2.64, z: 0}
+  m_LocalPosition: {x: 1.5, y: 9.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1616,12 +1616,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawning: 0
-  tetromino: 3
+  tetromino: 4
   spawnPoint: {fileID: 2096384751}
   blockPrefab: {fileID: 0}
   _tetromino:
-  - {fileID: 1006616347591552210, guid: b43598cf90cbba6418840150dc31bd41, type: 3}
-  - {fileID: 1006616347591552210, guid: b43598cf90cbba6418840150dc31bd41, type: 3}
-  - {fileID: 1006616347591552210, guid: b43598cf90cbba6418840150dc31bd41, type: 3}
-  - {fileID: 1006616347591552210, guid: b43598cf90cbba6418840150dc31bd41, type: 3}
+  - {fileID: 6435937831206214194, guid: b0259f0725a9d6b4d8c3114bb804a6de, type: 3}
+  - {fileID: 5343183694883385972, guid: e35e4dd718c0dc34fb1777048e03d244, type: 3}
+  - {fileID: 8269813604274116497, guid: 1649c668658cc2c418f8ba13e2606931, type: 3}
+  - {fileID: 738663650847483817, guid: 1cb954261639527489fa774483722d16, type: 3}
   - {fileID: 1006616347591552210, guid: b43598cf90cbba6418840150dc31bd41, type: 3}
