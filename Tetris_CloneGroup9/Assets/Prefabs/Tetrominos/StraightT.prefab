@@ -162,11 +162,17 @@ MonoBehaviour:
   boxSpeed: 1
   downMovement: 1
   stopMoving: 0
+  rightRaycast: 0
+  leftRaycast: 0
   buttonsOff: 0
   groundLayer:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 2176
+  wallsMask:
+    serializedVersion: 2
+    m_Bits: 128
   raycastDistance: 1
+  wallDistance: 1
 --- !u!114 &8750814989371372790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,7 +397,7 @@ MonoBehaviour:
   raycastDistance: 0.5
   groundLayer:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 2176
   childObjects:
   - {fileID: 0}
 --- !u!61 &1710913895855527414
