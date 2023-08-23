@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: -6451878878450021573}
   m_Layer: 0
   m_Name: T_Bricks
-  m_TagString: Brick
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,6 +167,13 @@ MonoBehaviour:
   boxSpeed: 1
   downMovement: 1
   stopMoving: 0
+  rightRaycast: 0
+  leftRaycast: 0
+  buttonsOff: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  raycastDistance: 1
 --- !u!114 &998770715031723961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,10 +186,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99d6be6c5729fa149a3595bdc4b9a77a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastDistance: 5
+  rotations: 0
+  typeOfTetro: 4
+  raycastDistance: 0.5
   groundLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 2048
+  childObjects: []
 --- !u!114 &713421294214761120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,8 +205,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef1cf13a24ae8f4cb7dbf854bc79bbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxSpeed: 1
-  downMovement: 4
 --- !u!61 &8655837653068144442
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -267,9 +275,9 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 7
 --- !u!1 &1006616347909765709
 GameObject:
   m_ObjectHideFlags: 0
