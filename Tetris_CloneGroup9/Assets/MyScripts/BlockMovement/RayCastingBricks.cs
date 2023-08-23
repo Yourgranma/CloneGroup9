@@ -233,12 +233,13 @@ public class RayCastingBricks : MonoBehaviour
 
             if (rotations == Rotations.OneEighty)
             {
-                hit[0] = Physics2D.Raycast(transform.position + new Vector3(0, 0, 0), Vector2.down, raycastDistance, groundLayer);
                 Vector2 up = (transform.TransformDirection(Vector2.up)) * raycastDistance;
-                Debug.DrawRay(transform.position, up, Color.blue);
+                hit[0] = Physics2D.Raycast(transform.position + new Vector3(0, -1f, 0), Vector2.down, raycastDistance, groundLayer);
+                Debug.DrawRay(transform.position + new Vector3(0, -1f, 0), up, Color.blue);
+                
 
-                hit[1] = Physics2D.Raycast(transform.position + new Vector3(1f, 0, 0), Vector2.down, raycastDistance, groundLayer);
-                Debug.DrawRay(transform.position + new Vector3(1f, 0, 0), up, Color.blue);
+                hit[1] = Physics2D.Raycast(transform.position + new Vector3(1, 0, 0), Vector2.down, raycastDistance, groundLayer);
+                Debug.DrawRay(transform.position + new Vector3(1, 0, 0), up, Color.blue);
 
                 hit[2] = Physics2D.Raycast(transform.position + new Vector3(-1f, -1, 0), Vector2.down, raycastDistance, groundLayer);
                 Debug.DrawRay(transform.position + new Vector3(-1f, -1, 0), up, Color.magenta);
@@ -254,12 +255,12 @@ public class RayCastingBricks : MonoBehaviour
             {
 
                 Vector2 right = (transform.TransformDirection(Vector2.right)) * raycastDistance;
-                hit[0] = Physics2D.Raycast(transform.position + new Vector3(0, -1f, 0), Vector2.down, raycastDistance, groundLayer);
-                Debug.DrawRay(transform.position + new Vector3(0, -1f, 0), right, Color.blue);
+                hit[0] = Physics2D.Raycast(transform.position + new Vector3(0, 0, 0), Vector2.down, raycastDistance, groundLayer);
+                Debug.DrawRay(transform.position + new Vector3(0, 0, 0), right, Color.blue);
 
 
                 hit[1] = Physics2D.Raycast(transform.position + new Vector3(1, -1f, 0), Vector2.down, raycastDistance, groundLayer);
-                Debug.DrawRay(transform.position + new Vector3(1, -1f, 0), right, Color.blue);
+                Debug.DrawRay(transform.position + new Vector3(1, -1f, 0), right, Color.red);
                 StraightTetromino();
             }
 

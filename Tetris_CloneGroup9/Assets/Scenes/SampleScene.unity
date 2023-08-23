@@ -1555,12 +1555,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawning: 0
-  tetromino: 4
+  tetromino: 5
   spawnPoint: {fileID: 2096384751}
   blockPrefab: {fileID: 0}
   _tetromino:
-  - {fileID: 5343183694883385972, guid: e35e4dd718c0dc34fb1777048e03d244, type: 3}
-  - {fileID: 5343183694883385972, guid: e35e4dd718c0dc34fb1777048e03d244, type: 3}
-  - {fileID: 5343183694883385972, guid: e35e4dd718c0dc34fb1777048e03d244, type: 3}
-  - {fileID: 5343183694883385972, guid: e35e4dd718c0dc34fb1777048e03d244, type: 3}
-  - {fileID: 5343183694883385972, guid: e35e4dd718c0dc34fb1777048e03d244, type: 3}
+  - {fileID: 8269813604274116497, guid: 1649c668658cc2c418f8ba13e2606931, type: 3}
+  - {fileID: 8269813604274116497, guid: 1649c668658cc2c418f8ba13e2606931, type: 3}
+  - {fileID: 8269813604274116497, guid: 1649c668658cc2c418f8ba13e2606931, type: 3}
+  - {fileID: 8269813604274116497, guid: 1649c668658cc2c418f8ba13e2606931, type: 3}
+  - {fileID: 8269813604274116497, guid: 1649c668658cc2c418f8ba13e2606931, type: 3}
