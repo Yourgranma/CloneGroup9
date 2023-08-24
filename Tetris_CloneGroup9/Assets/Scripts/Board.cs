@@ -8,6 +8,7 @@ public class Board : MonoBehaviour
     public TetrominoData[] tetrominoes;
     public Vector3Int spawnPosition;
     public Vector2Int boardSize = new Vector2Int(10, 20);
+    private TetrisManagement tetrisManagement;
 
     public RectInt Bounds
     {
@@ -20,6 +21,7 @@ public class Board : MonoBehaviour
 
     private void Awake()
     {
+        tetrisManagement = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TetrisManagement>(); ;
         this.tilemap = GetComponentInChildren<Tilemap>();
         this.activePiece = GetComponentInChildren<Piece>();
 
@@ -39,7 +41,11 @@ public class Board : MonoBehaviour
     {
         int random = Random.Range(0, this.tetrominoes.Length);
         TetrominoData data = this.tetrominoes[random];
+        
+        Debug.Log(random);
 
+     
+        tetrisManagement._countingScore.TetrisNumber(random);
         this.activePiece.Initialize(this, this.spawnPosition, data);
 
         if(IsValidPosition(this.activePiece, this.spawnPosition))
@@ -78,6 +84,8 @@ public class Board : MonoBehaviour
             Vector3Int tilePosition = piece.cells[i] + piece.position;
             this.tilemap.SetTile(tilePosition, null);
         }
+
+        
     }
 
     public bool IsValidPosition(Piece piece, Vector3Int position) 
@@ -106,11 +114,12 @@ public class Board : MonoBehaviour
     {
         RectInt bounds = this.Bounds;
         int row = bounds.yMin;
-
+        
         while (row < bounds.yMax)
         {
             if (IsLineFull(row))
             {
+                tetrisManagement._countingScore.CountingScore(1);
                 LineClear(row);
             }
             else
