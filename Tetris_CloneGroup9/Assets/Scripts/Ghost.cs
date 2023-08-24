@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class Ghost : MonoBehaviour
 {
+    //ghost script
     public Tile tile;
     public Board board;
     public Piece trackingPiece;
