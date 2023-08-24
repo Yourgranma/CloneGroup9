@@ -3,20 +3,25 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Brick
+  - Ground
+  - SpawningBricks
+  - GameManager
+  - Block
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Bricks
   - Water
   - UI
+  - Ground
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - LBricks
+  - SkweBricks
+  - TBricks
+  - MainBrick
   - 
   - 
   - 
