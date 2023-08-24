@@ -6,12 +6,17 @@ using TMPro;
 public class CountingScrores : MonoBehaviour
 {
     public int score = 0;
+    int currentScore;
+    int previousScore;
     int[] tetroCount = new int[7];
     public TextMeshProUGUI _score;
     public TextMeshProUGUI[] _numberOfTretominos= new TextMeshProUGUI[7];
+
+    bool _scoreDelay;
     // Start is called before the first frame update
     void Start()
     {
+        _scoreDelay = false;
         score = 0;
     }
 
@@ -26,12 +31,17 @@ public class CountingScrores : MonoBehaviour
         {
             _numberOfTretominos[i].text = tetroCount[i].ToString();
         }
-        
+        currentScore = score;
     }
 
     public void CountingScore(int scoreToAdd)
     {
+        StartCoroutine(ScoreDelay());
         score = score + scoreToAdd;
+        if (currentScore - previousScore == 2)
+        {
+            score = score + 2;
+        }
     }
 
     public void TetrisNumber(int number)
@@ -77,5 +87,24 @@ public class CountingScrores : MonoBehaviour
             ++tetroCount[6];
             Debug.Log("Z");
         }
+    }
+
+
+    public void Bonuses()
+    {
+        if (_scoreDelay)
+        {
+            previousScore = currentScore;
+            
+            _scoreDelay = false;
+        }
+       
+    }
+
+    IEnumerator ScoreDelay()
+    {
+        _scoreDelay = false;
+        yield return new WaitForSeconds(2);
+        _scoreDelay = true;
     }
 }
