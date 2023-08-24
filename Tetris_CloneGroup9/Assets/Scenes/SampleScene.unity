@@ -1246,7 +1246,11 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
+  wallsMask:
+    serializedVersion: 2
+    m_Bits: 0
   raycastDistance: 1
+  wallDistance: 2.5
 --- !u!4 &1447450871
 Transform:
   m_ObjectHideFlags: 0

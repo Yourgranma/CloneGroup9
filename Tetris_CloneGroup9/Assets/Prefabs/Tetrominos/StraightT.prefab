@@ -170,7 +170,7 @@ MonoBehaviour:
     m_Bits: 2176
   wallsMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 2176
   raycastDistance: 1
   wallDistance: 1
 --- !u!114 &8750814989371372790

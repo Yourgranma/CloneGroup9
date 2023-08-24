@@ -12,7 +12,7 @@ public class MovingBlocks : MonoBehaviour
     public bool rightRaycast;
     public bool leftRaycast;
     bool stopRotation;
-    private Rigidbody2D rigidbody2D;
+    Rigidbody2D rigidbody2D;
     
     private TetrisManager tetrisManager;
     private GameObject gameManager;
