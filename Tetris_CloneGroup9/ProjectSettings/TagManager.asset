@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - GameManager
+  - Board
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Board
   - Water
   - UI
   - 

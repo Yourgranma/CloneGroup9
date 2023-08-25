@@ -120,6 +120,7 @@ public class Board : MonoBehaviour
             if (IsLineFull(row))
             {
                 tetrisManagement._countingScore.CountingScore(1);
+                ++tetrisManagement._countingScore._numberOfLines;
                 LineClear(row);
             }
             else

@@ -6,16 +6,23 @@ using TMPro;
 public class CountingScrores : MonoBehaviour
 {
     public int score = 0;
+    public int _numberOfLines;
+    public int level = 0;
+    private int nextlevel = 10;
     int currentScore;
     int previousScore;
     int[] tetroCount = new int[7];
     public TextMeshProUGUI _score;
+    public TextMeshProUGUI _lines;
+    public TextMeshProUGUI _level;
     public TextMeshProUGUI[] _numberOfTretominos= new TextMeshProUGUI[7];
 
     bool _scoreDelay;
     // Start is called before the first frame update
     void Start()
     {
+        _level.text = level.ToString();
+        _numberOfLines = 0;
         _scoreDelay = false;
         score = 0;
     }
@@ -23,9 +30,10 @@ public class CountingScrores : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _lines.text = "Lines-" + _numberOfLines.ToString();
         if (_score != null)
         {
-            _score.text = "Score: " + score.ToString();
+            _score.text = score.ToString();
         }
         for(int i = 0; i < 7;  i++)
         {
@@ -89,7 +97,14 @@ public class CountingScrores : MonoBehaviour
         }
     }
 
-
+    public void Levels()
+    {
+        if (_numberOfLines == nextlevel)
+        {
+            ++level;
+            nextlevel = nextlevel + 10;
+        }
+    }
     public void Bonuses()
     {
         if (_scoreDelay)

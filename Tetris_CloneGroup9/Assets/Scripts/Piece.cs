@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Piece : MonoBehaviour
 {
+    public int blockSpeed;
     public Board board { get; private set; }
     public TetrominoData data { get; private set; }
     public Vector3Int[] cells { get; private set; }
@@ -85,7 +86,7 @@ public class Piece : MonoBehaviour
     {
         this.stepTime = Time.time + this.stepDelay;
 
-        Move(Vector2Int.down);
+        Move(Vector2Int.down*blockSpeed);
 
         if(this.lockTime >= this.lockDelay)
         {
